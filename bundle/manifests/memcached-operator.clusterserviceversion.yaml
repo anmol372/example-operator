@@ -19,7 +19,6 @@ metadata:
     operators.operatorframework.io/builder: operator-sdk-v1.13.1
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
   name: memcached-operator.v0.0.1
-  namespace: placeholder
 spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
@@ -129,7 +128,7 @@ spec:
                 - --leader-elect
                 command:
                 - /manager
-                image: quay.io/anmol372/memcached-operator
+                image: quay.io/anmol372/memcached-operator:0.0.1
                 livenessProbe:
                   httpGet:
                     path: /healthz
@@ -192,11 +191,11 @@ spec:
         serviceAccountName: memcached-operator-controller-manager
     strategy: deployment
   installModes:
-  - supported: false
+  - supported: true
     type: OwnNamespace
-  - supported: false
+  - supported: true
     type: SingleNamespace
-  - supported: false
+  - supported: true
     type: MultiNamespace
   - supported: true
     type: AllNamespaces
